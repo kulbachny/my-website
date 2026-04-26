@@ -8,13 +8,10 @@ body {
     background-color: #ffffff;
     color: #000000;
     font-family: 'Playfair Display', serif;
-    /* Робимо сторінку довгою, щоб вона скролилась нативно */
-    height: 5000px; 
     overflow-x: hidden;
 }
 
 .drum-container {
-    /* Барабан завжди стоїть по центру екрана, поки ти скролиш */
     position: fixed;
     top: 0;
     left: 0;
@@ -23,8 +20,23 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    perspective: 2000px;
+    perspective: 1400px;
+    overflow: hidden;
     z-index: 10;
+    -webkit-mask-image: linear-gradient(
+        to bottom,
+        transparent 0%,
+        black 28%,
+        black 72%,
+        transparent 100%
+    );
+    mask-image: linear-gradient(
+        to bottom,
+        transparent 0%,
+        black 28%,
+        black 72%,
+        transparent 100%
+    );
 }
 
 .drum-wheel {
@@ -43,22 +55,27 @@ body {
     align-items: center;
     text-align: center;
     backface-visibility: hidden;
-    padding: 10px;
+    padding: 30px 10px;
+}
+
+.drum-item--sep {
+    padding: 20px 10px;
 }
 
 .main-text {
     font-size: 1.6rem;
-    line-height: 1.1;
+    line-height: 1.4;
     max-width: 500px;
     color: #000;
 }
 
 .sub-text {
     font-size: 0.8rem;
-    color: #888; /* Сірий текст підписів */
-    margin-top: 6px;
+    color: #888;
+    margin-top: 12px;
     font-style: italic;
     max-width: 450px;
+    line-height: 1.5;
 }
 
 a {
