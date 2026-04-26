@@ -29,6 +29,25 @@ const totalItems = content.length;
 const radius = window.innerWidth < 768 ? 220 : 340;
 const angleStep = 360 / totalItems;
 
+function setTheme(theme) {
+    document.body.setAttribute('data-theme', theme);
+}
+
+function getThemeByLocalTime() {
+    const hour = new Date().getHours();
+    return hour >= 7 && hour < 19 ? 'light' : 'dark';
+}
+
+function applyAutoTheme() {
+    setTheme(getThemeByLocalTime());
+}
+
+applyAutoTheme();
+setInterval(applyAutoTheme, 60 * 1000);
+document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) applyAutoTheme();
+});
+
 content.forEach((itemData, i) => {
     const item = document.createElement('div');
     const isSep = itemData.main === '***';

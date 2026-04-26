@@ -4,11 +4,24 @@
     box-sizing: border-box;
 }
 
+:root {
+    --bg-color: #ffffff;
+    --text-color: #000000;
+    --muted-text-color: #888888;
+}
+
+body[data-theme="dark"] {
+    --bg-color: #111111;
+    --text-color: #ececec;
+    --muted-text-color: #b3b3b3;
+}
+
 body {
-    background-color: #ffffff;
-    color: #000000;
+    background-color: var(--bg-color);
+    color: var(--text-color);
     font-family: 'Playfair Display', serif;
     overflow-x: hidden;
+    transition: background-color 0.25s ease, color 0.25s ease;
 }
 
 .drum-container {
@@ -87,12 +100,12 @@ body {
     font-size: 1.6rem;
     line-height: 1.4;
     max-width: 500px;
-    color: #000;
+    color: var(--text-color);
 }
 
 .sub-text {
     font-size: 0.8rem;
-    color: #888;
+    color: var(--muted-text-color);
     margin-top: 12px;
     font-style: italic;
     max-width: 450px;
