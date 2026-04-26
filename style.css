@@ -55,11 +55,32 @@ body {
     align-items: center;
     text-align: center;
     backface-visibility: hidden;
-    padding: 30px 10px;
+    padding: 16px 10px;
 }
 
 .drum-item--sep {
-    padding: 20px 10px;
+    padding: 0 10px;
+}
+
+.drum-item--sep .main-text {
+    display: inline-block;
+    line-height: 1;
+    padding: 22px 0;
+}
+
+.drum-item--sep-loose-intro .main-text,
+.drum-item--sep-loose-consulting .main-text {
+    padding: 50px 0;
+}
+
+.drum-item--before-sep .main-text,
+.drum-item--before-sep .sub-text {
+    transform: translateY(-10px);
+}
+
+.drum-item--after-sep .main-text,
+.drum-item--after-sep .sub-text {
+    transform: translateY(10px);
 }
 
 .main-text {

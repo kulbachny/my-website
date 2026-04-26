@@ -1,5 +1,6 @@
 const content = [
     { main: "Hey, I'm Illia Kulbachnyi. I run<br><a href='https://cosmos.studio/'>Cosmos Studio</a> — a Digital<br>Design Agency." },
+    { main: "***", sepClass: "drum-item--sep-loose-intro" },
     { main: "We do Product Design (UX/UI).", sub: "We design logic, from CTA to Pixel-Perfect interfaces." },
     { main: "***" },
     { main: "AI Sound & Audio Branding.", sub: "Sound is 30% of the vibe. AI-powered audio identity." },
@@ -13,9 +14,13 @@ const content = [
     { main: "Pitch Deck Design.", sub: "Presentations that raise capital, metrics into stories." },
     { main: "***" },
     { main: "Also building <a href='https://aim.coach/'>AIM Fitness</a> — a marketplace where you can find your fitness coach." },
+    { main: "***" },
     { main: "Currently based in Bali. Local time: <span id='bali-time'></span>" },
+    { main: "***" },
     { main: "I study electronic music and AI experiments. Here is my <a href='https://open.spotify.com/artist/32Rkx97vwsJu15l5W28jcB?si=raEZbWLfTgSyenP7SbSRQw'>Spotify</a>." },
+    { main: "***" },
     { main: "Consulting on design and agency management. Obsessed with fantasy books: Witcher, Game of Thrones etc." },
+    { main: "***", sepClass: "drum-item--sep-loose-consulting" },
     { main: "Follow the journey: <a href='https://www.instagram.com/kulbachny'>Instagram</a>, <a href='https://www.linkedin.com/in/kulbachny/'>LinkedIn</a>, <a href='https://www.tiktok.com/@kulbachny'>TikTok</a>. Let's collaborate or be friends. Talk to me." }
 ];
 
@@ -26,7 +31,14 @@ const angleStep = 360 / totalItems;
 
 content.forEach((itemData, i) => {
     const item = document.createElement('div');
-    item.className = itemData.main === '***' ? 'drum-item drum-item--sep' : 'drum-item';
+    const isSep = itemData.main === '***';
+    const prevIsSep = content[i - 1]?.main === '***';
+    const nextIsSep = content[i + 1]?.main === '***';
+
+    item.className = isSep ? 'drum-item drum-item--sep' : 'drum-item';
+    if (isSep && itemData.sepClass) item.classList.add(itemData.sepClass);
+    if (!isSep && nextIsSep) item.classList.add('drum-item--before-sep');
+    if (!isSep && prevIsSep) item.classList.add('drum-item--after-sep');
     let innerHTML = `<div class="main-text">${itemData.main}</div>`;
     if (itemData.sub) innerHTML += `<div class="sub-text">${itemData.sub}</div>`;
     item.innerHTML = innerHTML;
